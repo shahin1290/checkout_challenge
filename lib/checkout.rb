@@ -1,42 +1,36 @@
 class Checkout
-attr_accesor :cart, :product
+    attr_accessor :cart, :products, :product
    
     def initialize
         @cart = []  
-        @product = set_products
-    end
-
-    def cart()
-        
+        @products = set_products
     end
 
     def scan(item)
-        case item
-        when
-        end
-        @cart << item
+        @cart << find_item(item)
+        @cart[0]
     end
 
+    def find_item(item)
+        @product = set_products.find { |h| h[:name] == item }[:price]
+    end
 
-    # def find_item
-    # end
-    
     private
 
     def set_products
         [
           {
-            product: 1,
+            # product: 1,
             name: 'Lavender heart',
             price: 9.25
           },
           {
-            product: 2,
+            # product: 2,
             name: 'Personalised cufflinks',
             price: 45.00
           },
           {
-            product: 3,
+            # product: 3,
             name: 'Kids T-shirt',
             price: 19.95
           }
